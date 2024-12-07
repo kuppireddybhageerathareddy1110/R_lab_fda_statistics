@@ -1,0 +1,185 @@
+#1
+import numpy as np
+
+# Define the NumPy array
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+# 1. NumPy Array Attributes:
+# a) Determine the shape and size of the array arr
+print("Shape of arr:", arr.shape)
+print("Size of arr:", arr.size)
+
+# b) Change the dtype of the array arr to float
+arr_float = arr.astype(float)
+print("Array with float dtype:", arr_float)
+
+# 2. Array Indexing: Accessing Single Elements:
+# a) Access and print the third element of the array arr
+third_element = arr[2]
+print("Third element of arr:", third_element)
+
+# b) Update the value of the fourth element in the array arr to 10
+arr[3] = 10
+print("Updated arr:", arr)
+
+# c) Access and print a sub-array containing the first three elements of the array arr
+sub_arr = arr[:3]
+print("Sub-array of first three elements:", sub_arr)
+
+# d) Using negative indexing, access and print the last element of the array arr
+last_element = arr[-1]
+print("Last element of arr:", last_element)
+
+
+
+
+
+
+
+
+
+#2
+import numpy as np
+
+# Define the NumPy array
+arr = np.array([[1, 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11, 12]])
+
+# 1. Array Slicing: Accessing Subarrays:
+# a) Access and print the subarray consisting of the first two rows of the array arr
+subarray_first_two_rows = arr[:2]
+print("Subarray of first two rows:")
+print(subarray_first_two_rows)
+
+# b) Access and print the subarray consisting of the last two columns of the array arr
+subarray_last_two_columns = arr[:, -2:]
+print("Subarray of last two columns:")
+print(subarray_last_two_columns)
+
+# c) Access and print a subarray consisting of the elements in the second row, starting from the second column, up to and including the third column.
+subarray_second_row_second_to_third_column = arr[1, 1:3]
+print("Subarray of second row, second to third column:")
+print(subarray_second_row_second_to_third_column)
+
+# 2. Reshaping of Arrays:
+# a) Reshape the array arr into a 2x6 array. Print the reshaped array and explain the result.
+arr_reshaped_2x6 = arr.reshape(2, 6)
+print("Reshaped array to 2x6:")
+print(arr_reshaped_2x6)
+print("Explanation: The reshape operation rearranges the elements of the original array into a new shape while maintaining the same elements. In this case, the original array has 3 rows and 4 columns, so reshaping it into a 2x6 array results in a new array with 2 rows and 6 columns, while preserving the order of elements.")
+
+# b) Reshape the array arr into a 1D array. Print the reshaped array and discuss the purpose of reshaping arrays
+arr_reshaped_1d = arr.reshape(-1)
+print("Reshaped array to 1D:")
+print(arr_reshaped_1d)
+print("Purpose of reshaping arrays: Reshaping arrays allows us to manipulate the structure of the data without changing its contents. It can be useful for preparing data for certain operations or for compatibility with functions that expect a specific array shape.")
+
+
+
+
+
+
+
+
+
+
+#3
+import numpy as np
+# Define the NumPy arrays
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+# 1. Array Concatenation and Splitting:
+# a) Concatenate arr1 and arr2 horizontally (column-wise) and print the result.
+horizontal_concatenation = np.hstack((arr1.reshape(-1, 1), arr2.reshape(-1, 1)))
+print("Horizontal Concatenation:")
+print(horizontal_concatenation)
+# b) Concatenate arr1 and arr2 vertically (row-wise) and print the result.
+vertical_concatenation = np.vstack((arr1, arr2))
+print("\nVertical Concatenation:")
+print(vertical_concatenation)
+# c) Split the array arr1 into three equal-sized subarrays. Print the resulting subarrays.
+arr1_split = np.array_split(arr1, 3)
+print("\nSplitting arr1 into three subarrays:")
+for subarr in arr1_split:
+    print(subarr)
+# d) Split the array arr2 at indices 1 and 2. Print the resulting subarrays.
+arr2_split = np.split(arr2, [1, 2])
+print("\nSplitting arr2 at indices 1 and 2:")
+for subarr in arr2_split:
+    print(subarr)
+# 2. Aggregations:
+# a) Calculate and print the sum of all elements in arr1 and arr2.
+print("\nSum of elements in arr1:", np.sum(arr1))
+print("Sum of elements in arr2:", np.sum(arr2))
+# b) Find and print the minimum and maximum values in arr1 and arr2.
+print("\nMinimum value in arr1:", np.min(arr1))
+print("Maximum value in arr1:", np.max(arr1))
+print("Minimum value in arr2:", np.min(arr2))
+print("Maximum value in arr2:", np.max(arr2))
+
+# c) Calculate and print the mean and standard deviation of arr1 and arr2.
+print("\nMean of arr1:", np.mean(arr1))
+print("Standard deviation of arr1:", np.std(arr1))
+print("Mean of arr2:", np.mean(arr2))
+print("Standard deviation of arr2:", np.std(arr2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#4
+import numpy as np
+
+# Define the structured array
+data = np.array([(1, 2.5, 'A'), (2, 3.6, 'B'), (3, 4.7, 'C')],
+                dtype=[('ID', int), ('Value', float), ('Category', 'U1')])
+
+# 1. Computations on Arrays:
+# a) Compute the square of the 'Value' column in the structured array and assign it to a new variable. Print the new array.
+value_squared = data['Value'] ** 2
+print("Square of 'Value' column:")
+print(value_squared)
+
+# b) Calculate the mean of the 'ID' column in the structured array. Print the result.
+id_mean = np.mean(data['ID'])
+print("\nMean of 'ID' column:", id_mean)
+
+# c) Perform element-wise multiplication of the 'ID' column with the 'Value' column and store the result in a new array. Print the new array.
+id_value_product = data['ID'] * data['Value']
+print("\nElement-wise multiplication of 'ID' and 'Value' columns:")
+print(id_value_product)
+
+# 2. NumPy's Structured Arrays:
+# a) Access and print the value in the second row of the 'Category' column.
+category_value_second_row = data['Category'][1]
+print("\nValue in the second row of 'Category' column:", category_value_second_row)
+
+# b) Update the value in the third row of the 'Value' column to 5.2. Print the modified array to verify the change.
+data['Value'][2] = 5.2
+print("\nModified array after updating value in the third row of 'Value' column:")
+print(data)
+
+# c) Sort the structured array based on the 'ID' column in ascending order. Print the sorted array.
+sorted_data = np.sort(data, order='ID')
+print("\nSorted array based on 'ID' column:")
+print(sorted_data)
+
+
+
+
